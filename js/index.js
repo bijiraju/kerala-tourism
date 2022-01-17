@@ -1,7 +1,7 @@
 let email=document.getElementById("email");
-// let error=document.getElementById("error");
+let error=document.getElementById("error");
 function validate(){
-    let regexp=/^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/
+    let regexp=/^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/;
 
     if(regexp.test(email.value)){
         // error.innerHTML="valid";
@@ -9,7 +9,7 @@ function validate(){
         return true;
     }
     else
-    error.innerHTML ="Invalid";
+    error.innerHTML ="Invalid  email";
     error.style.color="red";
     return false;
 }
