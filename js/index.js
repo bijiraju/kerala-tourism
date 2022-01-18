@@ -8,7 +8,7 @@ function validate(){
     if(email.value.match(Regex)){
         icon.innerHTML = '<i class="fas fa-check-circle"></i>';
         icon.style.color = '#2ecc71';
-        error.style.display = 'valid';
+        error.style.display = 'none';
         email.style.border = '2px solid #2ecc71';
         return true;
     }
