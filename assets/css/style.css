@@ -613,7 +613,7 @@ section {
 /* login page background */
 #formbackground{
   background-image: url("/assets/img/kathakali.jpg") ;
-  background-color: #000000;
+  
   background-repeat: no-repeat;
   background-size: cover;
 }
