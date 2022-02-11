@@ -48,38 +48,37 @@
   </div>
 </header><!-- End Header -->
 
-  <main id="formbackground">
-
-   
-    <section class="inner-page">
-      <div class="container">
-        <div class="wrapper">
-              <header>Log In </header>
-              <form action="districts.html">
-                <div class="field email">
-                  <div class="input-area">
-                    <input type="text" placeholder="Email Address">
-                    <i class="icon fas fa-envelope"></i>
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="error error-txt">Email can't be blank</div>
+<main id="formbackground">
+  <section class="inner-page">
+    <div class="container">
+      <div class="wrapper">
+          <header>Log In </header>
+            <form action="districts.html" onsubmit="return loginvalidate()">
+               <!-- Email input -->
+              <div class="field email mb-4">
+                <div class="input-area">
+                  <input type="email" id="email" class="form-control" placeholder="Enter Email" oninput="loginvalidate()">
+                  <label for="emailerror" id="emailerror"> </label>
                 </div>
-                <div class="field password">
-                  <div class="input-area">
-                    <input type="password" placeholder="Password">
-                    <i class="icon fas fa-lock"></i>
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="error error-txt">Password can't be blank</div>
+              </div>
+               <!-- Password input -->
+              <div class="field password mb-4">
+                <div class="input-area">
+                  <input type="password" id="password" placeholder="Enter Password" class="form-control" oninput="loginvalidate()" >
+                  <label class="passworderror mb-4" for="passworderror" id="passworderror"></label>
                 </div>
-                <div class="pass-txt"><a href="#">Forgot password?</a></div>
+              </div>
+             
                 <input type="submit" value="Login">
-              </form>
-              <div class="sign-txt">Not yet member? <a href="signup.html">Signup now</a></div>
-            </div>
-      </div>
-    </section>
-  </main><!-- End #main -->
+    
+              <!-- <div class="pass-txt"><a href="#">Forgot password?</a></div> -->
+              
+            </form>
+            <div class="sign-txt">Not yet member? <a href="signup.html">Signup now</a></div>
+          </div>
+    </div>
+  </section>
+</main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

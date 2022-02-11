@@ -1,80 +1,168 @@
 
+var email = document.getElementById("email");
+var emailerror = document.getElementById("emailerror");
+var password = document.getElementById("password");
+var passworderror = document.getElementById("passworderror");
 
-  /**
-   * Validations 
-   */
-   const form = document.querySelector("form");
-   emailField = form.querySelector(".email"),
-   emailInput = emailField.querySelector("input"),
-   passwordField = form.querySelector(".password"),
-   passwordInput = passwordField.querySelector("input");
+var Regex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
+var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
    
-   form.onsubmit = (e)=>{
-     e.preventDefault(); //preventing from form submitting
-     //if email and password is blank then add shake class in it else call specified function
-     (emailInput.value == "") ? emailField.classList.add("shake", "error") : checkEmail();
-     (passwordInput.value == "") ? passwordField.classList.add("shake", "error") : checkPass();
-   
-     setTimeout(()=>{ //remove shake class after 500ms
-       emailField.classList.remove("shake");
-       passwordField.classList.remove("shake");
-     }, 500);
-   
-     emailInput.onkeyup = ()=>{checkEmail();} //calling checkEmail function on email input keyup
-     passwordInput.onkeyup = ()=>{checkPass();} //calling checkPassword function on pass input keyup
-   
-     function checkEmail(){ //checkEmail function
-       let pattern = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/; //pattern for validate email
-       if(!emailInput.value.match(pattern)){ //if pattern not matched then add error and remove valid class
-         emailField.classList.add("error");
-         emailField.classList.remove("valid");
-         let errorTxt = emailField.querySelector(".error-txt");
-         //if email value is not empty then show please enter valid email else show Email can't be blank
-         (emailInput.value != "") ? errorTxt.innerText = "Enter a valid email address" : errorTxt.innerText = "Email can't be blank";
-       }else{ //if pattern matched then remove error and add valid class
-         emailField.classList.remove("error");
-         emailField.classList.add("valid");
-       }
-     }
-   
-     function checkPass(){ //checkPass function
-        let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
-        let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
-   
-       if(passwordInput.value == ""){ //if pass is empty then add error and remove valid class
-         passwordField.classList.add("error");
-         passwordField.classList.remove("valid");
-       }
-       else if(!passwordInput.value.match(strongPassword))
-       {
-           passwordField.classList.add("error");
-           passwordField.classList.remove("valid");
-           let errorTxt = pField.querySelector(".error-txt");
-           
-         //if email value is not empty then show please enter valid email else show Email can't be blank
-         (passwordInput.value != "") ? errorTxt.innerText = "Weak" : errorTxt.innerText = "Password can't be blank";
-       
-       }
-       else if(!passwordInput.value.match(mediumPassword))
-       {
-           passwordField.classList.add("error");
-           passwordField.classList.remove("valid");
-           let errorTxt = passwordField.querySelector(".error-txt");
-         //if email value is not empty then show please enter valid email else show Email can't be blank
-         (passwordInput.value == mediumPassword) ? errorTxt.innerText = "Medium" : errorTxt.innerText = "Password can't be blank";
-       
-       }
-       else{ //if pass is empty then remove error and add valid class
-         passwordField.classList.remove("error");
-         passwordField.classList.add("valid");
-       }
-     }
-   
-     //if eField and pField doesn't contains error class that mean user filled details properly
-     if(!emailField.classList.contains("error") && !passwordField.classList.contains("error")){
-       window.location.href = form.getAttribute("action"); //redirecting user to the specified url which is inside action attribute of form tag
-     }
-   }
+function loginvalidate(){
+
+    if(email.value.match(Regex)){
+        emailerror.innerHTML = 'Valid';
+        email.style.border = '2px solid #07b510';
+        emailerror.style.color="#07b510";
+        // return true;
+    }
+    else if (email.value == "")
+    {
+        emailerror.innerHTML = 'Email cannot be blank';
+        emailerror.style.color="#FF0000";
+        email.style.border = '2px solid #FF0000';
+        return false;
+    }
+    else{
+        emailerror.innerHTML = 'Enter Valid Email id';
+        emailerror.style.color="#FFA500";
+        email.style.border = '2px solid #FFA500';
+        return false;
+        
+        
+    }
+
+    if(password.value.match(passwordRegex)){
+        passworderror.innerHTML = 'Valid';
+        password.style.border = '2px solid #07b510';
+        passworderror.style.color="#07b510";
+        // return true;
+    }
+    else if (password.value == "")
+    {
+        passworderror.innerHTML = 'Password cannot be blank';
+        passworderror.style.color="#FF0000";
+        password.style.border = '2px solid #FF0000';
+        return false;
+    }
+    else{
+        passworderror.innerHTML = 'Password should be of minimum 8 characters,at least 1 uppercase,1 lower case, must contain at least 1 number and 1 special character';
+        passworderror.style.color="#FFA500";
+        password.style.border = '2px solid #FFA500';
+        return false;
+      
+    }
+};
+
+var uname = document.getElementById("uname");
+var unameerror = document.getElementById("unameerror");
+var semail = document.getElementById("semail");
+var semailerror = document.getElementById("semailerror");
+var phone = document.getElementById("phone");
+var phoneerror = document.getElementById("phoneerror");
+var spassword = document.getElementById("spassword");
+var spassworderror = document.getElementById("spassworderror");
+var confirmpassword = document.getElementById("confirmpassword");
+var confirmpassworderror = document.getElementById("confirmpassworderror");
+
+function signupvalidate()
+{   
+
+    var semailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    //username validation
+    if ((uname.value)==null || (uname.value)=="")
+    {  
+        unameerror.innerHTML = 'User name cannot be blank';
+        unameerror.style.color="#FF0000";
+        uname.style.border = '2px solid #FF0000'; 
+        return false;  
+    } 
+    else{
+        unameerror.innerHTML = 'Valid';
+        uname.style.border = '2px solid #07b510';
+        unameerror.style.color="#07b510";
+    } 
+    //email validation 
+    if(semail.value.match(semailRegex)){
+        semailerror.innerHTML = 'Valid';
+        semail.style.border = '2px solid #07b510';
+        semailerror.style.color="#07b510";
+    }
+    else if (semail.value == "")
+    {
+        semailerror.innerHTML = 'Email cannot be blank';
+        semailerror.style.color="#FF0000";
+        semail.style.border = '2px solid #FF0000';
+        return false;
+    }
+    else{
+        semailerror.innerHTML = 'Enter Valid Email id';
+        semailerror.style.color="#FFA500";
+        semail.style.border = '2px solid #FFA500';
+        return false;
+    }
+    // phone validation
+    if(phone.value.match(phoneRegex)){
+        phoneerror.innerHTML = 'Valid';
+        phone.style.border = '2px solid #07b510';
+        phoneerror.style.color="#07b510";
+    }
+    else if (phone.value == "")
+    {
+        phoneerror.innerHTML = 'Phone number cannot be blank';
+        phoneerror.style.color="#FF0000";
+        phone.style.border = '2px solid #FF0000';
+        return false;
+    }
+    else{
+        phoneerror.innerHTML = 'Enter valid format. Formats: XXX-XXX-XXXX or XXX.XXX.XXXX or XXX XXX XXXX';
+        phoneerror.style.color="#FFA500";
+        phone.style.border = '2px solid #FFA500';
+        return false;
+    }
+    //password validation
+    if(spassword.value.match(passwordRegex)){
+        spassworderror.innerHTML = 'Strong';
+        spassworderror.style.backgroundColor="#07b510";
+        spassworderror.style.color="#000000";
+        spassword.style.border = '2px solid #07b510';
+    }
+    else if (spassword.value == "")
+    {
+        spassworderror.innerHTML = 'Poor';
+        spassworderror.style.backgroundColor="#FF0000";
+        spassworderror.style.color="#000000";
+        spassword.style.border = '2px solid #FF0000';
+        return false;
+    }
+    else{
+        spassworderror.innerHTML = 'Weak';
+        spassworderror.style.backgroundColor ="#FFA500";
+        spassworderror.style.color="#000000";
+        spassword.style.border = '2px solid #FFA500';
+        return false;
+      
+    }
+    //confirm password
+    if(spassword.value!=confirmpassword.value)
+    {
+        confirmpassworderror.innerHTML = 'Passwords Doesnot Match';
+        confirmpassworderror.style.color="#FF0000";
+        confirmpassword.style.border = '2px solid #FF0000';
+        return false;
+    }
+    else{
+        confirmpassworderror.innerHTML = 'Password Match';
+        confirmpassword.style.border = '2px solid #07b510';
+        confirmpassworderror.style.color="#07b510";
+        return true;
+    
+    }
+ };
+
 
 
 
