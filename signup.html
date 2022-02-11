@@ -48,55 +48,60 @@
   </div>
 </header><!-- End Header -->
 
-  <main id="formbackground">
-
-   
-    <section class="inner-page">
-      <div class="container">
-        <div class="wrapper">
-              <header>Sign Up</header>
-              <form action="districts.html">
-                <div class="field fullname">
-                  <div class="input-area">
-                    <input type="text" placeholder="Full Name">
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="error error-txt">Name can't be blank</div>
+<main id="formbackground">
+  <section class="inner-page">
+    <div class="container">
+      <div class="wrapper">
+            <header>Sign Up</header>
+            <form action="districts.html" onsubmit="return signupvalidate()">
+              <!-- username input -->
+              <div class="field username mb-4">
+                <div class="input-area">
+                  <input type="text" id="uname" class="form-control" placeholder="User Name" oninput="signupvalidate()">
+                  <label for="unameerror" id="unameerror"> </label>
                 </div>
-
-                <div class="field email">
-                  <div class="input-area">
-                    <input type="text" placeholder="Email Address">
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="error error-txt">Email can't be blank</div>
+              </div>
+               <!-- Email input -->
+              <div class="field email mb-4">
+                <div class="input-area">
+                  <input type="email" id="semail" class="form-control" placeholder="Enter Email" oninput="signupvalidate()">
+                  <label for="emailerror" id="semailerror"> </label>
                 </div>
-
-                <div class="field phone">
-                  <div class="input-area">
-                    <input type="text" placeholder="Mobile Number">
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="error error-txt">Mobile Number can't be blank</div>
+              </div>
+              <!-- ph.no input -->
+              <div class="field phone mb-4">
+                <div class="input-area">
+                  <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number"  oninput="signupvalidate()">
+                  <label for="phoneerror" id="phoneerror"> </label>
                 </div>
-              
-                <div class="field password">
-                  <div class="input-area">
-                    <input type="password" placeholder="Password">
-                    <i class="icon fas fa-lock"></i>
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="error error-txt">Password can't be blank</div>
+              </div>
+              <!-- Password input -->
+              <div class="field password mb-4">
+                <div class="input-area">
+                  <input type="password" id="spassword" class="form-control" placeholder="Enter Password" oninput="signupvalidate()">
+                  <!-- <label for="spassworderror" id="spassworderror"> </label> -->
                 </div>
-                <div class="pass-txt"><a href="#">Forgot password?</a></div>
-                <input type="submit" value="Sign up">
-              </form>
-              <div class="sign-txt">Already a member? <a href="login.html">Login Here</a></div>
+              </div>
+              <div class="d-flex text-danger justify-content-center">
+                <h5><span id="spassworderror" class="badge displayBadge" width="20px"></span></h5>
+             </div>
+             <!--Confirm Password input -->
+             <div class="field password mb-2">
+              <div class="input-area">
+                <input type="password" id="confirmpassword" class="form-control" placeholder="Confirm Password" oninput="signupvalidate()">
+                <label for="confirmpassworderror" id="confirmpassworderror"> </label>
+              </div>
             </div>
-      </div>
-    </section>
 
-  </main><!-- End #main -->
+              <input type="submit" value="Sign up">
+
+            </form>
+            <div class="sign-txt">Already a member? <a href="login.html">Login Here</a></div>
+          </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
