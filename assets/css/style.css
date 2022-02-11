@@ -692,6 +692,9 @@ form input[type="submit"]{
 form input[type="submit"]:hover{
   background: #5c9f24;
 }
+#spassworderror{
+  width: 320px;
+}
 
 
 /*--------------------------------------------------------------
